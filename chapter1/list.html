@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>サンプル</title>
+  </head>
+  <body>
+    <div id="app">
+      <ul>
+        <li v-for="item in list">{{item.name}} {{item.price}}円</li>
+      </ul>
+    </div>
+    <script src="https://jp.vuejs.org/js/vue.js"></script>
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          list: [
+            { name: "商品A", price: 100 },
+            { name: "商品B", price: 200 },
+            { name: "商品C", price: 300 },
+          ],
+        },
+      });
+    </script>
+  </body>
+</html>
