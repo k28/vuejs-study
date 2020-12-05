@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>サンプル</title>
+</head>
+<body>
+<div id="app">
+{{price}}円
+</div>
+<script src="https://jp.vuejs.org/js/vue.js"></script>
+<script>
+var app = new Vue({
+    el: '#app',
+    data: {
+    price: 0
+}
+});
+app.price = 1000;
+</script>
+</body>
+</html>
+
