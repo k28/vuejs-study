@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sample</title>
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body>
+    <div id="app">{{message}} {{price | number_format | unit}}</div>
+    <div id="comptest">
+      調べたい年:<input type="text" v-model="year" /><br />
+      {{year}}年は{{isUrudoshi ? '閏年です' : '閏年ではありません'}}
+    </div>
+    <div id="cachetest">
+      <div v-show="show">
+        <p>"{{now1()}}"</p>
+        <p>"{{now2}}"</p>
+      </div>
+    </div>
+    <script src="https://jp.vuejs.org/js/vue.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
