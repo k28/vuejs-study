@@ -18,12 +18,12 @@ var app = new Vue({
     sortOrder:  1,
     // 商品リスト
     products: [
-      {name: 'Michael<br>スマホケース', price: 1580, image: 'image/01.jpg', delv: 0,   isSale: true},
-      {name: 'Raphael<br>スマホケース', price: 1580, image: 'image/02.jpg', delv: 0,   isSale: true},
-      {name: 'Gabriel<br>スマホケース', price: 1580, image: 'image/03.jpg', delv: 240, isSale: true},
-      {name: 'Uriel<br>スマホケース',   price: 980,  image: 'image/04.jpg', delv: 0,   isSale: true},
-      {name: 'Ariel<br>スマホケース',   price: 980,  image: 'image/05.jpg', delv: 0,   isSale: false},
-      {name: 'Azrael<br>スマホケース',  price: 1580, image: 'image/06.jpg', delv: 0,   isSale: false},
+      {id: 1,name: 'Michael<br>スマホケース', price: 1580, image: 'image/01.jpg', delv: 0,   isSale: true},
+      {id: 2,name: 'Raphael<br>スマホケース', price: 1580, image: 'image/02.jpg', delv: 0,   isSale: true},
+      {id: 3,name: 'Gabriel<br>スマホケース', price: 1580, image: 'image/03.jpg', delv: 240, isSale: true},
+      {id: 4,name: 'Uriel<br>スマホケース',   price: 980,  image: 'image/04.jpg', delv: 0,   isSale: true},
+      {id: 5,name: 'Ariel<br>スマホケース',   price: 980,  image: 'image/05.jpg', delv: 0,   isSale: false},
+      {id: 6,name: 'Azrael<br>スマホケース',  price: 1580, image: 'image/06.jpg', delv: 0,   isSale: false},
     ]
   },
   watch: {
@@ -55,6 +55,16 @@ var app = new Vue({
         if (isShow) {
           result.push(product);
         }
+      }
+
+      // 新しい配列を並び替える
+      if (this.sortOrder == 1) {
+        // 標準, 元の順序のままresultにpushしているのでこの時は何もしない
+      } else if (this.sortOrder == 2) {
+        // 価格が安い順に並び替える
+        result.sort(function(a, b){
+          return a.price - b.price;
+          });
       }
 
       return result;
