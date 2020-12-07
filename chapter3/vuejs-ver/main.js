@@ -26,4 +26,38 @@ var app = new Vue({
       {name: 'Azrael<br>スマホケース',  price: 1580, image: 'image/06.jpg', delv: 0,   isSale: false},
     ]
   },
+  watch: {
+    // セール対象 チェックボックスの状態を監視するウォッチャ
+    showSaleItem: function(newVal, oldVal) {
+      // ここでproductsの配列を書き換える
+      console.log('showSaleItemウォッチャが呼び出されました');
+    },
+    // 送料無料 チェックボックスの状態を監視するウォッチャ
+    showDelvFree: function(newVal, oldVal) {
+      console.log('showDelvFreeウォッチャが呼び出されました');
+    }
+  },
+  computed: {
+    // 絞り込み後の商品リストを返す算出プロパティ
+    filteredList: function() {
+      // 絞り込み後の結果を保持する新しい配列
+      var result = [];
+      for (var i = 0; i < this.products.length; i++) {
+        var isShow = true;
+        var product = this.products[i];
+        if (this.showSaleItem && !product.isSale) {
+          isShow = false;
+        }
+        if (this.showDelvFree && !(product.delv == 0)) {
+          isShow = false;
+        }
+
+        if (isShow) {
+          result.push(product);
+        }
+      }
+
+      return result;
+    }
+  }
 });
