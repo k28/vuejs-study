@@ -48,7 +48,7 @@ var app = new Vue({
       return Math.floor(untaxed * (1 + this.taxRate));
     },
     // 日付の差分を求める関数
-    getTimeDiff: function(dateString1, dateString2) {
+    getDateDiff: function(dateString1, dateString2) {
       // 日付を表す文字列から日付オブジェクトを生成
       var date1 = new Date(dateString1);
       var date2 = new Date(dateString2);
@@ -84,7 +84,7 @@ var app = new Vue({
       // 割増料金
       var addPrice = 0;
       // 納期までの残り日数を計算
-      var dateDiff = getDateDiff(this.delivery_date, (new Date()).toLocaleString())
+      var dateDiff = this.getDateDiff(this.delivery_date, (new Date()).toLocaleString())
       // 割増料金を求める
       if (21 <= dateDiff && dateDiff < 30) {
         // 納期が1ヶ月未満の場合
@@ -125,10 +125,10 @@ var app = new Vue({
       if (this.opt4_num == '') {this.opt4_num = 0;}
       optPrice += this.opt4_num * this.opt4_price;
       
-      return incTax(optPrice);
+      return this.incTax(optPrice);
     },
     taxedTotalPrice: function() {
-      return (this.taxedBasePrice() + this.taxedOptPrice());
+      return this.taxedBasePrice + this.taxedOptPrice;
     },
     tommorow: function() {
       // DVD仕上がり予定日に翌日以降しか入力できないよにする
